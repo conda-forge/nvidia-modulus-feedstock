@@ -1,6 +1,6 @@
-{% set python_min = '3.10' %}
+{% set python_min = "3.10" %}
 {% set name = "nvidia-modulus" %}
-{% set version = "0.7.0" %}
+{% set version = "0.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,14 +8,14 @@ package:
 
 source:
   url: https://github.com/NVIDIA/modulus/archive/refs/tags/v0.7.0.tar.gz
-  sha256: 8c81b53b1b106e9af9a60c2ce416a93f2e44ebc00061fb7d0631ccb63f8f0ae8
+  sha256: edd94cbf713d3e26d6fa13738b0241cb8e3464e5f3d0b3d46d98a24cb27d0d2c
 
 build:
   noarch: python
   script:
     - sed -i.bak '/nvidia_dali_cuda120/d' pyproject.toml
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
